@@ -3,11 +3,12 @@ import { RealTimeTrackingComponent } from './components';
 import { DashboardService } from './services';
 import { Marker, Order, Truck } from './interfaces';
 import { CREATE_MARKET } from './utils';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RealTimeTrackingComponent],
+  imports: [RealTimeTrackingComponent, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -19,11 +20,17 @@ export class AppComponent {
   constructor(private readonly dashboardService: DashboardService) { }
 
   ngOnInit(): void {
-    this.trucks.set(this.dashboardService.getTrucks());
-    this.orders.set(this.dashboardService.getOrders());
+    this.dashboardService.getTrucks().forEach((data) => {
+      this.trucks.set(data.trucks);
+    })
 
-      let markers = this.orders().map((order) => CREATE_MARKET(order))
-      this.markers.set(markers);
+    this.dashboardService.getOrders().forEach((data) => {
+      this.orders.set(data.orders);
+    })
+
+
+    let markers = this.orders().map((order) => CREATE_MARKET(order))
+    this.markers.set(markers);
 
   }
 }

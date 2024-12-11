@@ -44,10 +44,10 @@
           <tbody id="trucks-list">
             @for(truck of trucks();track $index){
               <tr>
-                <td class="px-4 py-2 border">{{truck.truckId}}</td>
+                <td class="px-4 py-2 border">{{truck._id}}</td>
                 <td class="px-4 py-2 border">{{truck.driver}}</td>
                 <td class="px-4 py-2 border">{{truck.location}}</td>
-                <td class="px-4 py-2 border text-green-600">{{truck.status}}</td>
+                <td class="px-4 py-2 border" [ngClass]="{'text-green-600': truck.status === 'ACTIVO','text-gray-600': truck.status === 'INACTIVO'}">{{truck.status}}</td>
             </tr>
             }
           </tbody>

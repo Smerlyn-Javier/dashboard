@@ -1,5 +1,5 @@
 export interface Truck {
-  truckId: string;
+  _id: string;
   driver: string;
   location: string;
   status: string;

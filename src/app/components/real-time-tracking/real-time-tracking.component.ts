@@ -31,9 +31,10 @@ export class RealTimeTrackingComponent {
     const directionsService = new google.maps.DirectionsService();
 
     directionsService.route(
+
       {
-        origin: { lat: 18.483920, lng: -69.940366 }, // Inicio
-        destination: { lat: 18.465482, lng: -69.929869 }, // Destino
+        origin: { lat: 18.482852, lng: -69.945455 }, // Inicio
+        destination: { lat: 18.501165, lng: -69.950980 }, // Destino
         travelMode: google.maps.TravelMode.DRIVING,
       },
       (response, status) => {

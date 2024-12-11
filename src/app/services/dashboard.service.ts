@@ -1,35 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Order, Truck } from '../interfaces';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  constructor() { }
+  constructor(private readonly httpClient:HttpClient) { }
 
-
-  getTrucks(): Array<Truck> {
-    return [{ driver: 'Jose', location: 'Santo Domingo', status: 'EN RUTA', truckId: '12A12' },{ driver: 'Antonio', location: 'Santo Domingo', status: 'EN RUTA', truckId: '34A32' }]
+  getTrucks(){
+    return this.httpClient.get<{trucks:Truck[]}>('http://127.0.0.1:8000/trucks');
   }
-  getOrders(): Array<Order> {
-    return [{
-      destination: 'Plaza Duarte',
-      customer: 'Plaza Duarte SRL',
-      orderId: '123000',
-      origin: 'Ferreteria Innova Centro',
-      status: 'ACTIVA',
-      route: this.positions
-    },
-    {
-      destination: 'Supermercado Nacional 27 de Febrero',
-      customer: 'El Nacional',
-      orderId: '524000',
-      origin: 'Agora Mall',
-      status: 'ACTIVA',
-      route: this.position2
-    }
-    ]
+  getOrders(){
+    return this.httpClient.get<{orders:Order[]}>('http://127.0.0.1:8000/orders')
   }
 
   positions = [
