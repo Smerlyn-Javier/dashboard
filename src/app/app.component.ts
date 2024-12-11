@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RealTimeTrackingComponent } from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RealTimeTrackingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
