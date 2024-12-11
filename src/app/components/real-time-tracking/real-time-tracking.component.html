@@ -1,6 +1,9 @@
 <div class="">
   <h2 class="text-xl font-semibold mb-2">Real-Time Tracking</h2>
-  <div id="real-time-tracking" class="h-64 bg-gray-200 flex items-center justify-center">
-    <p>Map Visualization Placeholder</p>
-  </div>
+  <google-map #map height="700px" width="100%" [center]="center()" [zoom]="zoom">
+    @for (marker of newMarkers(); track $index) {
+    <map-marker [position]="marker.position" [options]="marker.markerOptions"
+      (markerInitialized)="startMarkersMovement()" />
+    }
+  </google-map>
 </div>

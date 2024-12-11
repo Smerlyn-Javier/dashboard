@@ -16,7 +16,15 @@
               </tr>
           </thead>
           <tbody id="orders-list">
-              <!-- Orders will be dynamically loaded here -->
+            @for(order of orders();track $index){
+              <tr>
+                <td class="px-4 py-2 border">{{order.orderId}}</td>
+                <td class="px-4 py-2 border">{{order.customer}}</td>
+                <td class="px-4 py-2 border">{{order.origin}}</td>
+                <td class="px-4 py-2 border">{{order.destination}}</td>
+                <td class="px-4 py-2 border text-yellow-600">{{order.status}}</td>
+            </tr>
+            }
           </tbody>
       </table>
   </div>
@@ -34,13 +42,20 @@
               </tr>
           </thead>
           <tbody id="trucks-list">
-              <!-- Trucks will be dynamically loaded here -->
+            @for(truck of trucks();track $index){
+              <tr>
+                <td class="px-4 py-2 border">{{truck.truckId}}</td>
+                <td class="px-4 py-2 border">{{truck.driver}}</td>
+                <td class="px-4 py-2 border">{{truck.location}}</td>
+                <td class="px-4 py-2 border text-green-600">{{truck.status}}</td>
+            </tr>
+            }
           </tbody>
       </table>
   </div>
 
   <!-- Real-Time Tracking Section -->
   <div class="bg-white shadow-md rounded-lg p-4">
-      <app-real-time-tracking/>
+      <app-real-time-tracking [markers]="markers()"/>
   </div>
 </div>
