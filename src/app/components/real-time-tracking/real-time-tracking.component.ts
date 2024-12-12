@@ -69,7 +69,7 @@ export class RealTimeTrackingComponent {
           marker.routeIndex = 0;
         }
       });
-    }, 1000);
+    }, 5000);
   }
 
 }
